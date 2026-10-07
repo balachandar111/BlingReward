@@ -122,7 +122,30 @@ function Featurespage() {
       />
 
       <section className="feat section">
-        <span className="feat__glow" aria-hidden="true" />
+        {/* decorative background layer */}
+        <div className="feat__bg" aria-hidden="true">
+          <span className="feat__orb o1" />
+          <span className="feat__orb o2" />
+          <span className="feat__orb o3" />
+          <span className="feat__dots" />
+          <span className="feat__ring r1" />
+          <span className="feat__ring r2" />
+          <span className="feat__chip c1">
+            <QrCode size={22} />
+          </span>
+          <span className="feat__chip c2">
+            <Gift size={20} />
+          </span>
+          <span className="feat__chip c3">
+            <MessageCircle size={22} />
+          </span>
+          <span className="feat__chip c4">
+            <Zap size={20} />
+          </span>
+          <span className="feat__chip c5">
+            <ShieldCheck size={20} />
+          </span>
+        </div>
 
         <div className="container">
           <div className="section-head is-center">
@@ -148,7 +171,7 @@ function Featurespage() {
               return (
                 <article
                   key={f.id}
-                  className={`feat-card reveal-item ${f.span} ${f.accent ? "is-accent" : ""}`}
+                  className={`feat-card reveal-item tone-${f.id} ${f.span} ${f.accent ? "is-accent" : ""}`}
                   style={{ "--i": i }}
                 >
                   <Icon className="feat-card__mark" size={150} strokeWidth={1} aria-hidden="true" />
