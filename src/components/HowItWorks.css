@@ -1,0 +1,134 @@
+/* ==========================================================================
+   "Rewards they love" – coupon-ticket carousel
+   ========================================================================== */
+
+.coupons__carousel {
+  --pv: 4;
+  --gap: 22px;
+}
+
+@media (max-width: 1100px) {
+  .coupons__carousel { --pv: 3; }
+}
+
+@media (max-width: 800px) {
+  .coupons__carousel { --pv: 2; --gap: 16px; }
+}
+
+@media (max-width: 520px) {
+  .coupons__carousel { --pv: 1.25; --gap: 14px; }
+}
+
+/* The wrapper carries the shadow (a mask would clip a box-shadow). */
+.coupon {
+  --notch: 52%;
+  height: 100%;
+  filter: drop-shadow(0 18px 18px rgba(76, 29, 149, 0.18));
+  transition: transform 0.4s var(--ease), filter 0.4s;
+}
+
+.coupon:hover {
+  transform: translateY(-6px) rotate(-0.6deg);
+  filter: drop-shadow(0 26px 24px rgba(76, 29, 149, 0.28));
+}
+
+.coupon__body {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 320px;
+  border-radius: var(--r-lg);
+  background: #fff;
+  /* ticket notches on both sides, at the perforation line */
+  -webkit-mask:
+    radial-gradient(15px at 0 var(--notch), #0000 97%, #000) left / 51% 100% no-repeat,
+    radial-gradient(15px at 100% var(--notch), #0000 97%, #000) right / 51% 100% no-repeat;
+  mask:
+    radial-gradient(15px at 0 var(--notch), #0000 97%, #000) left / 51% 100% no-repeat,
+    radial-gradient(15px at 100% var(--notch), #0000 97%, #000) right / 51% 100% no-repeat;
+}
+
+.coupon__top {
+  display: grid;
+  place-items: center;
+  flex: 0 0 var(--notch);
+  background:
+    radial-gradient(70% 70% at 50% 30%, rgba(255, 255, 255, 0.8), transparent 70%),
+    linear-gradient(160deg, var(--lav-100), var(--lav-200));
+}
+
+/* rotate through three tints of the same violet ramp */
+.carousel__slide:nth-child(3n + 2) .coupon__top {
+  background:
+    radial-gradient(70% 70% at 50% 30%, rgba(255, 255, 255, 0.55), transparent 70%),
+    linear-gradient(160deg, #e9d5ff, #d8b4fe);
+}
+
+.carousel__slide:nth-child(3n) .coupon__top {
+  background:
+    radial-gradient(70% 70% at 50% 30%, rgba(255, 255, 255, 0.7), transparent 70%),
+    linear-gradient(160deg, #ede9fe, #c7d2fe);
+}
+
+.coupon__icon {
+  display: grid;
+  place-items: center;
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 14px 30px -12px rgba(76, 29, 149, 0.45);
+  transition: transform 0.5s var(--ease);
+}
+
+.coupon:hover .coupon__icon {
+  transform: scale(1.08) rotate(6deg);
+}
+
+.coupon__icon {
+  color: var(--deep);
+}
+
+/* dashed perforation */
+.coupon__tear {
+  height: 0;
+  margin: 0 22px;
+  border-top: 2px dashed var(--lav-300);
+}
+
+.coupon__bottom {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 4px;
+  padding: 20px 24px 22px;
+}
+
+.coupon__bottom h3 {
+  font-size: 1.28rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+}
+
+.coupon__bottom p {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--deeper);
+}
+
+.coupon__barcode {
+  height: 22px;
+  margin-top: auto;
+  opacity: 0.35;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--ink-700) 0 2px,
+    transparent 2px 5px,
+    var(--ink-700) 5px 6px,
+    transparent 6px 11px,
+    var(--ink-700) 11px 14px,
+    transparent 14px 17px
+  );
+  -webkit-mask: linear-gradient(90deg, #000 70%, transparent);
+  mask: linear-gradient(90deg, #000 70%, transparent);
+}

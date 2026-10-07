@@ -1,0 +1,461 @@
+/* ==========================================================================
+   BLING REWARD – GLOBAL DESIGN SYSTEM
+   Palette is unchanged from the original site (violet / purple / lavender).
+   Dark surfaces are simply the deep end of the same violet ramp.
+   ========================================================================== */
+
+:root {
+  /* ---- Original brand palette (kept) ---- */
+  --bg-primary: #ffffff;
+  --bg-secondary: #fbfaff;
+  --primary: #8b5cf6;
+  --secondary: #a855f7;
+  --accent: #c084fc;
+  --text-primary: #111827;
+  --text-secondary: #6b7280;
+  --card-bg: #ffffff;
+  --border: rgba(139, 92, 246, 0.15);
+  --gradient: linear-gradient(135deg, #a855f7 0%, #8b5cf6 50%, #7c3aed 100%);
+  --light-gradient: linear-gradient(180deg, #f3e8ff 0%, #ffffff 100%);
+
+  /* ---- Extended ramp (same hues the original CSS already used) ---- */
+  --deep: #7c3aed;
+  --deeper: #7e22ce;
+  --indigo: #6366f1;
+  --lav-50: #fbfaff;
+  --lav-100: #f3e8ff;
+  --lav-200: #e9d5ff;
+  --lav-300: #d8b4fe;
+  --ink-900: #160a33;
+  --ink-800: #1f0f4a;
+  --ink-700: #2e1065;
+  --ink-600: #4c1d95;
+  --text-soft: #4b5563;
+  --border-strong: rgba(139, 92, 246, 0.32);
+  --dark-gradient: linear-gradient(150deg, #1b0b3f 0%, #2e1065 55%, #4c1d95 100%);
+
+  /* ---- Shape ---- */
+  --r-xs: 8px;
+  --r-sm: 12px;
+  --r-md: 18px;
+  --r-lg: 28px;
+  --r-xl: 40px;
+  --r-pill: 999px;
+
+  /* ---- Depth (violet-tinted, never neutral grey) ---- */
+  --shadow-sm: 0 1px 2px rgba(46, 16, 101, 0.06), 0 6px 16px -8px rgba(46, 16, 101, 0.14);
+  --shadow-md: 0 22px 44px -22px rgba(76, 29, 149, 0.4);
+  --shadow-lg: 0 44px 90px -34px rgba(76, 29, 149, 0.5);
+
+  /* ---- Type ---- */
+  --font-display: "Bricolage Grotesque", "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-body: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+  /* ---- Layout ---- */
+  --gutter: clamp(20px, 4vw, 48px);
+  --nav-h: 76px;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ---------- Base ---------- */
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--nav-h) + 24px);
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text-primary);
+  background: var(--bg-primary);
+  overflow-x: hidden;
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  color: var(--text-primary);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+p {
+  color: var(--text-secondary);
+  line-height: 1.65;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+img {
+  height: auto;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+::selection {
+  background: var(--lav-200);
+  color: var(--ink-700);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* ---------- Layout helpers ---------- */
+
+.container {
+  width: min(1200px, 100% - 2 * var(--gutter));
+  margin-inline: auto;
+}
+
+.section {
+  position: relative;
+  padding-block: clamp(72px, 9vw, 128px);
+}
+
+.section-head {
+  max-width: 720px;
+  margin-bottom: clamp(32px, 5vw, 56px);
+}
+
+.section-head.is-center {
+  margin-inline: auto;
+  text-align: center;
+}
+
+.section-head.is-center .section-lede {
+  margin-inline: auto;
+}
+
+.section-title {
+  font-size: clamp(2rem, 4.2vw, 3.35rem);
+  font-weight: 700;
+  line-height: 1.06;
+  letter-spacing: -0.03em;
+}
+
+.section-lede {
+  margin-top: 1rem;
+  max-width: 58ch;
+  font-size: clamp(1rem, 1.25vw, 1.1rem);
+}
+
+.text-gradient {
+  background: linear-gradient(120deg, #a855f7 0%, #7c3aed 55%, #6366f1 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.text-gradient-light {
+  background: linear-gradient(120deg, #e9d5ff 0%, #c084fc 60%, #a5b4fc 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* ---------- Buttons ---------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.95rem 1.6rem;
+  border-radius: var(--r-pill);
+  border: 1px solid transparent;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease),
+    background-color 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.btn svg {
+  transition: transform 0.25s var(--ease);
+}
+
+.btn:hover svg.btn-arrow {
+  transform: translateX(4px);
+}
+
+.btn-sm {
+  padding: 0.7rem 1.2rem;
+  font-size: 0.875rem;
+}
+
+.btn-primary {
+  background: var(--gradient);
+  color: #fff;
+  box-shadow: 0 16px 32px -14px rgba(124, 58, 237, 0.75),
+    inset 0 1px 0 rgba(255, 255, 255, 0.28);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 22px 38px -14px rgba(124, 58, 237, 0.85),
+    inset 0 1px 0 rgba(255, 255, 255, 0.28);
+}
+
+.btn-ghost {
+  background: rgba(255, 255, 255, 0.72);
+  color: var(--ink-700);
+  border-color: var(--border-strong);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.btn-ghost:hover {
+  background: #fff;
+  border-color: var(--primary);
+}
+
+.btn-light {
+  background: #fff;
+  color: var(--ink-700);
+  box-shadow: 0 16px 32px -16px rgba(0, 0, 0, 0.5);
+}
+
+.btn-light:hover {
+  transform: translateY(-2px);
+  background: var(--lav-100);
+}
+
+.btn-outline-light {
+  background: rgba(255, 255, 255, 0.06);
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.35);
+}
+
+.btn-outline-light:hover {
+  background: rgba(255, 255, 255, 0.16);
+  border-color: #fff;
+}
+
+/* ---------- Small label pill (sentence case, used sparingly) ---------- */
+
+.pill-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.42rem 0.95rem 0.42rem 0.5rem;
+  border-radius: var(--r-pill);
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid var(--border-strong);
+  color: var(--deeper);
+  font-size: 0.82rem;
+  font-weight: 600;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.pill-label .pill-dot {
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--gradient);
+  color: #fff;
+}
+
+/* ---------- Backgrounds ---------- */
+
+/* Soft lavender aurora (light sections) */
+.bg-aurora {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background:
+    radial-gradient(60% 50% at 8% 0%, rgba(243, 232, 255, 0.95), transparent 70%),
+    radial-gradient(50% 45% at 100% 12%, rgba(233, 213, 255, 0.7), transparent 70%),
+    linear-gradient(180deg, #fbfaff 0%, #ffffff 100%);
+}
+
+.bg-aurora::before,
+.bg-aurora::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.bg-aurora::before {
+  width: min(52vw, 760px);
+  aspect-ratio: 1;
+  top: -22%;
+  left: -12%;
+  background: radial-gradient(circle, rgba(192, 132, 252, 0.4), transparent 66%);
+  animation: aurora-a 24s ease-in-out infinite alternate;
+}
+
+.bg-aurora::after {
+  width: min(46vw, 680px);
+  aspect-ratio: 1;
+  right: -10%;
+  bottom: -26%;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.26), transparent 66%);
+  animation: aurora-b 28s ease-in-out infinite alternate;
+}
+
+/* Dotted grid overlay – place as an empty child */
+.bg-dots {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image: radial-gradient(rgba(124, 58, 237, 0.24) 1.1px, transparent 1.6px);
+  background-size: 28px 28px;
+  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 35%, #000 25%, transparent 75%);
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 35%, #000 25%, transparent 75%);
+}
+
+/* Deep violet surface (dark sections) */
+.bg-dark {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: var(--dark-gradient);
+  color: #fff;
+}
+
+.bg-dark::before,
+.bg-dark::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.bg-dark::before {
+  width: min(60vw, 820px);
+  aspect-ratio: 1;
+  top: -35%;
+  right: -12%;
+  background: radial-gradient(circle, rgba(168, 85, 247, 0.55), transparent 65%);
+  animation: aurora-b 26s ease-in-out infinite alternate;
+}
+
+.bg-dark::after {
+  width: min(50vw, 680px);
+  aspect-ratio: 1;
+  bottom: -38%;
+  left: -12%;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.45), transparent 65%);
+  animation: aurora-a 30s ease-in-out infinite alternate;
+}
+
+.bg-dark .bg-dots {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.22) 1.1px, transparent 1.6px);
+}
+
+.on-dark h1,
+.on-dark h2,
+.on-dark h3,
+.on-dark h4 {
+  color: #fff;
+}
+
+.on-dark p {
+  color: rgba(255, 255, 255, 0.74);
+}
+
+@keyframes aurora-a {
+  from { transform: translate3d(0, 0, 0) scale(1); }
+  to   { transform: translate3d(6%, 8%, 0) scale(1.12); }
+}
+
+@keyframes aurora-b {
+  from { transform: translate3d(0, 0, 0) scale(1.05); }
+  to   { transform: translate3d(-8%, -6%, 0) scale(0.94); }
+}
+
+/* ---------- Signature motif: QR "scan frame" corner brackets ---------- */
+
+.scan-frame {
+  position: relative;
+  --scan-c: var(--primary);
+  --scan-t: 3px;
+  --scan-l: 30px;
+  --scan-gap: 14px;
+}
+
+.scan-frame::before {
+  content: "";
+  position: absolute;
+  inset: calc(var(--scan-gap) * -1);
+  pointer-events: none;
+  z-index: 2;
+  background:
+    linear-gradient(var(--scan-c), var(--scan-c)) top left / var(--scan-l) var(--scan-t) no-repeat,
+    linear-gradient(var(--scan-c), var(--scan-c)) top left / var(--scan-t) var(--scan-l) no-repeat,
+    linear-gradient(var(--scan-c), var(--scan-c)) top right / var(--scan-l) var(--scan-t) no-repeat,
+    linear-gradient(var(--scan-c), var(--scan-c)) top right / var(--scan-t) var(--scan-l) no-repeat,
+    linear-gradient(var(--scan-c), var(--scan-c)) bottom left / var(--scan-l) var(--scan-t) no-repeat,
+    linear-gradient(var(--scan-c), var(--scan-c)) bottom left / var(--scan-t) var(--scan-l) no-repeat,
+    linear-gradient(var(--scan-c), var(--scan-c)) bottom right / var(--scan-l) var(--scan-t) no-repeat,
+    linear-gradient(var(--scan-c), var(--scan-c)) bottom right / var(--scan-t) var(--scan-l) no-repeat;
+}
+
+.on-dark .scan-frame,
+.scan-frame.is-light {
+  --scan-c: var(--accent);
+}
+
+/* ---------- Motion preferences ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    animation-delay: 0s !important;
+    transition-duration: 0.001ms !important;
+  }
+}

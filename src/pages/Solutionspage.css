@@ -1,0 +1,223 @@
+/* ==========================================================================
+   Solutions page – tabbed explorer
+   ========================================================================== */
+
+.sol-hero__frame {
+  --scan-gap: 14px;
+  margin: 14px;
+}
+
+.sol-hero__frame img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-lg);
+}
+
+.sol__grid {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.7fr) minmax(0, 1.3fr);
+  gap: clamp(20px, 3vw, 40px);
+  align-items: start;
+}
+
+/* ---------- tabs ---------- */
+
+.sol__tabs {
+  position: sticky;
+  top: calc(var(--nav-h) + 16px);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 10px;
+  border-radius: var(--r-lg);
+  background: var(--lav-50);
+  border: 1px solid var(--border);
+}
+
+.sol__tab {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 14px;
+  border: 0;
+  border-radius: var(--r-md);
+  background: transparent;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.95rem;
+  line-height: 1.3;
+  color: var(--text-soft);
+  cursor: pointer;
+  transition: background-color 0.25s, color 0.25s, box-shadow 0.25s;
+}
+
+.sol__tab:hover {
+  background: var(--lav-100);
+  color: var(--deeper);
+}
+
+.sol__tab.is-active {
+  background: var(--gradient);
+  color: #fff;
+  box-shadow: 0 14px 26px -14px rgba(124, 58, 237, 0.85);
+}
+
+.sol__tab-icon {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  background: #fff;
+  color: var(--deep);
+}
+
+.sol__tab.is-active .sol__tab-icon {
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+
+/* ---------- panel ---------- */
+
+.sol__panel {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.1rem;
+  min-height: 520px;
+  padding: clamp(28px, 4vw, 56px);
+  border-radius: var(--r-xl);
+  background:
+    radial-gradient(60% 50% at 100% 0%, rgba(233, 213, 255, 0.7), transparent 70%),
+    #fff;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+  animation: sol-in 0.5s var(--ease) both;
+}
+
+@keyframes sol-in {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: none; }
+}
+
+.sol__mark {
+  position: absolute;
+  right: -40px;
+  top: -30px;
+  z-index: -1;
+  color: var(--lav-200);
+  opacity: 0.8;
+}
+
+.sol__subtitle {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 16px 7px 12px;
+  border-radius: var(--r-pill);
+  background: var(--lav-100);
+  color: var(--deeper);
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.sol__panel h2 {
+  max-width: 18ch;
+  font-size: clamp(1.9rem, 3.6vw, 3rem);
+  font-weight: 800;
+  line-height: 1.04;
+  letter-spacing: -0.035em;
+}
+
+.sol__desc {
+  max-width: 52ch;
+  font-size: 1.08rem;
+  color: var(--text-soft);
+}
+
+.sol__cap-title {
+  margin-top: 0.8rem;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+}
+
+.sol__caps {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.sol__caps li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  border-radius: var(--r-md);
+  background: var(--lav-50);
+  border: 1px solid var(--border);
+  font-weight: 600;
+  font-size: 0.95rem;
+  line-height: 1.35;
+}
+
+.sol__check {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--gradient);
+  color: #fff;
+}
+
+/* ---------- responsive: tabs become a scrolling chip row ---------- */
+
+@media (max-width: 960px) {
+  .sol__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .sol__tabs {
+    position: static;
+    flex-direction: row;
+    overflow-x: auto;
+    scrollbar-width: none;
+    padding: 8px;
+    border-radius: var(--r-pill);
+  }
+
+  .sol__tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .sol__tab {
+    flex: none;
+    white-space: nowrap;
+    padding: 8px 18px 8px 8px;
+    border-radius: var(--r-pill);
+  }
+
+  .sol__panel {
+    min-height: 0;
+  }
+}
+
+@media (max-width: 560px) {
+  .sol__caps {
+    grid-template-columns: 1fr;
+  }
+
+  .sol__panel .btn {
+    width: 100%;
+  }
+}

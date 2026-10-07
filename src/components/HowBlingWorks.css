@@ -1,0 +1,134 @@
+/* ==========================================================================
+   How Bling Reward works
+   ========================================================================== */
+
+.hbw {
+  overflow-x: clip;
+}
+
+.hbw__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  align-items: center;
+  gap: clamp(36px, 6vw, 88px);
+}
+
+/* ---------- visual ---------- */
+
+.hbw__visual {
+  position: relative;
+  padding: 18px;
+}
+
+.hbw__frame {
+  position: relative;
+  z-index: 1;
+  border-radius: var(--r-lg);
+  overflow: visible;
+  --scan-gap: 14px;
+}
+
+.hbw__frame img {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-lg);
+}
+
+.hbw__glow {
+  position: absolute;
+  inset: 8% -6% -8% 10%;
+  z-index: 0;
+  border-radius: var(--r-xl);
+  background: var(--gradient);
+  opacity: 0.18;
+  transform: rotate(3deg);
+}
+
+/* ---------- copy ---------- */
+
+.hbw__copy {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.hbw__text {
+  max-width: 58ch;
+  font-size: clamp(0.98rem, 1.15vw, 1.06rem);
+  line-height: 1.75;
+  color: var(--text-soft);
+}
+
+/* ---------- stats (a ledger, not cards) ---------- */
+
+.hbw__stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin-top: 1rem;
+  border-top: 1px solid var(--border-strong);
+}
+
+.hbw__stat {
+  display: grid;
+  align-content: start;
+  gap: 8px;
+  padding: 22px 16px 22px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.hbw__stat:nth-child(even) {
+  padding-left: 24px;
+  border-left: 1px solid var(--border);
+}
+
+.hbw__stat dt {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-soft);
+}
+
+.hbw__stat-icon {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+  background: var(--lav-100);
+  color: var(--deep);
+}
+
+.hbw__stat dd {
+  order: -1;
+  font-family: var(--font-display);
+  font-size: clamp(2.3rem, 4vw, 3.2rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.045em;
+  font-variant-numeric: tabular-nums;
+  background: linear-gradient(120deg, #a855f7 0%, #7c3aed 60%, #6366f1 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@media (max-width: 900px) {
+  .hbw__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .hbw__stat {
+    padding-right: 8px;
+  }
+
+  .hbw__stat:nth-child(even) {
+    padding-left: 16px;
+  }
+}

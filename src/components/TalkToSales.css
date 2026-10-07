@@ -1,0 +1,170 @@
+/* ==========================================================================
+   Closing call-to-action
+   ========================================================================== */
+
+.cta {
+  padding-top: clamp(32px, 4vw, 56px);
+}
+
+.cta__panel {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+  align-items: center;
+  gap: clamp(32px, 5vw, 72px);
+  padding: clamp(32px, 6vw, 80px);
+  border-radius: var(--r-xl);
+  background:
+    radial-gradient(60% 80% at 100% 0%, rgba(192, 132, 252, 0.65), transparent 65%),
+    radial-gradient(50% 60% at 0% 100%, rgba(99, 102, 241, 0.5), transparent 65%),
+    linear-gradient(135deg, #8b5cf6 0%, #7c3aed 45%, #5b21b6 100%);
+  color: #fff;
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+}
+
+.cta__panel .bg-dots {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.24) 1.1px, transparent 1.6px);
+  -webkit-mask-image: radial-gradient(ellipse 60% 80% at 90% 40%, #000 20%, transparent 75%);
+  mask-image: radial-gradient(ellipse 60% 80% at 90% 40%, #000 20%, transparent 75%);
+}
+
+.cta__copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.25rem;
+}
+
+.cta__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: var(--r-pill);
+  background: rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.cta__title {
+  max-width: 20ch;
+  font-size: clamp(2.2rem, 5vw, 4rem);
+  font-weight: 800;
+  line-height: 1.02;
+  letter-spacing: -0.04em;
+  color: #fff;
+}
+
+.cta__text {
+  max-width: 48ch;
+  font-size: clamp(1rem, 1.3vw, 1.15rem);
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.cta__buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 0.5rem;
+}
+
+.cta__fineprint {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+/* ---------- QR art ---------- */
+
+.cta__art {
+  display: grid;
+  place-items: center;
+  padding: 20px;
+}
+
+.cta__qr {
+  position: relative;
+  width: min(300px, 100%);
+  aspect-ratio: 1;
+  padding: 22px;
+  border-radius: var(--r-lg);
+  background: #fff;
+  box-shadow: 0 40px 70px -26px rgba(22, 10, 51, 0.65);
+  transform: rotate(4deg);
+  --scan-gap: 16px;
+  --scan-c: #fff;
+}
+
+.cta__qr-svg {
+  width: 100%;
+  height: 100%;
+  fill: var(--ink-600);
+}
+
+.cta__qr-hole {
+  fill: #fff;
+}
+
+.cta__qr-badge {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: grid;
+  place-items: center;
+  width: 22%;
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+  border-radius: 24%;
+  background: var(--gradient);
+  color: #fff;
+  box-shadow: 0 0 0 5px #fff, 0 12px 24px -8px rgba(124, 58, 237, 0.8);
+}
+
+.cta__qr-scan {
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  top: 14px;
+  height: 3px;
+  border-radius: 3px;
+  background: linear-gradient(90deg, transparent, #a855f7 20%, #c084fc 50%, #a855f7 80%, transparent);
+  box-shadow: 0 0 18px 4px rgba(168, 85, 247, 0.55);
+  animation: cta-scan 4.5s ease-in-out infinite;
+}
+
+@keyframes cta-scan {
+  0%, 100% { top: 14px; opacity: 0; }
+  10%      { opacity: 1; }
+  50%      { top: calc(100% - 17px); opacity: 1; }
+  60%      { opacity: 0; }
+}
+
+@media (max-width: 860px) {
+  .cta__panel {
+    grid-template-columns: 1fr;
+    border-radius: var(--r-lg);
+  }
+
+  .cta__art {
+    order: -1;
+    justify-self: start;
+    padding: 12px;
+  }
+
+  .cta__qr {
+    width: 170px;
+    padding: 14px;
+    --scan-gap: 10px;
+    --scan-l: 20px;
+  }
+}
+
+@media (max-width: 560px) {
+  .cta__buttons .btn {
+    width: 100%;
+  }
+}

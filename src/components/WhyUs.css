@@ -1,0 +1,81 @@
+/* ==========================================================================
+   Why choose us
+   ========================================================================== */
+
+.whyus {
+  margin-block: clamp(24px, 4vw, 56px);
+  border-radius: var(--r-xl);
+}
+
+.whyus__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.3fr);
+  gap: clamp(32px, 5vw, 72px);
+  align-items: start;
+}
+
+.whyus__intro .section-title {
+  color: #fff;
+}
+
+.whyus__list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: clamp(24px, 3vw, 44px);
+}
+
+.whyus__item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 28px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+.whyus__icon {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--lav-200);
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s, transform 0.4s var(--ease);
+}
+
+.whyus__item:hover .whyus__icon {
+  background: #fff;
+  border-color: #fff;
+  color: var(--deep);
+  transform: scale(1.08);
+}
+
+.whyus__item h3 {
+  margin-bottom: 8px;
+  font-size: 1.15rem;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+}
+
+.whyus__item p {
+  font-size: 0.93rem;
+  line-height: 1.65;
+}
+
+@media (max-width: 1000px) {
+  .whyus__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .whyus {
+    border-radius: var(--r-lg);
+  }
+
+  .whyus__list {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,324 @@
+/* ==========================================================================
+   Case studies page
+   ========================================================================== */
+
+/* ---------- picker ---------- */
+
+.cs-picker {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.cs-pick {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 12px 12px 18px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--r-lg);
+  background: #fff;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 0.3s, box-shadow 0.3s, background-color 0.3s;
+}
+
+.cs-pick:hover {
+  border-color: var(--border-strong);
+  box-shadow: var(--shadow-md);
+}
+
+.cs-pick.is-active {
+  border-color: var(--primary);
+  background: var(--lav-50);
+  box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.14), var(--shadow-md);
+}
+
+.cs-pick img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: var(--r-md);
+}
+
+.cs-pick__text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 0 8px;
+}
+
+.cs-pick strong {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  letter-spacing: -0.025em;
+}
+
+.cs-pick.is-active strong {
+  color: var(--deeper);
+}
+
+.cs-pick small {
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--text-secondary);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ---------- detail ---------- */
+
+.cs-detail {
+  margin-top: clamp(28px, 4vw, 48px);
+  padding: clamp(22px, 4vw, 52px);
+  border-radius: var(--r-xl);
+  background:
+    radial-gradient(60% 40% at 100% 0%, rgba(233, 213, 255, 0.55), transparent 70%),
+    #fff;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-md);
+  animation: cs-in 0.5s var(--ease) both;
+}
+
+@keyframes cs-in {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: none; }
+}
+
+.cs-detail__head {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  align-items: center;
+  gap: clamp(24px, 4vw, 56px);
+  margin-bottom: clamp(28px, 4vw, 48px);
+}
+
+.cs-detail__img {
+  --scan-gap: 12px;
+  margin: 12px;
+}
+
+.cs-detail__img img {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  border-radius: var(--r-lg);
+}
+
+.cs-detail__intro {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.cs-detail__intro h2 {
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+}
+
+.cs-detail__intro > p {
+  max-width: 50ch;
+  font-size: 1.05rem;
+}
+
+.cs-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 32px;
+  width: 100%;
+  padding: 16px 0;
+  border-block: 1px solid var(--border);
+}
+
+.cs-stats li {
+  display: flex;
+  flex-direction: column;
+}
+
+.cs-stats strong {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.cs-stats span {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.cs-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.cs-tags li {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border-radius: var(--r-pill);
+  background: var(--lav-100);
+  color: var(--deeper);
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+/* ---------- blocks ---------- */
+
+.cs-blocks {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.cs-block {
+  padding: clamp(20px, 2.4vw, 30px);
+  border-radius: var(--r-lg);
+  background: var(--lav-50);
+  border: 1px solid var(--border);
+}
+
+.cs-block h3 {
+  margin-bottom: 16px;
+  padding-bottom: 14px;
+  border-bottom: 2px solid var(--lav-200);
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  color: var(--deeper);
+}
+
+.cs-block ul {
+  display: grid;
+  gap: 10px;
+}
+
+.cs-li,
+.cs-para {
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: var(--text-soft);
+}
+
+.cs-li {
+  position: relative;
+  padding-left: 20px;
+}
+
+.cs-li::before {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 0.62em;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.cs-li.is-check {
+  padding-left: 32px;
+}
+
+.cs-li.is-check::before,
+.cs-li.is-lead::before {
+  display: none;
+}
+
+.cs-li.is-lead {
+  padding-left: 0;
+}
+
+.cs-li.is-lead strong {
+  color: var(--text-primary);
+}
+
+.cs-check {
+  position: absolute;
+  left: 0;
+  top: 0.2em;
+  display: grid;
+  place-items: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--gradient);
+  color: #fff;
+}
+
+.cs-sub {
+  margin-top: 8px;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  color: var(--text-primary);
+}
+
+/* ---------- closing ---------- */
+
+.cs-cta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px 32px;
+  margin-top: clamp(32px, 4vw, 56px);
+  padding: clamp(28px, 4vw, 48px);
+  border-radius: var(--r-xl);
+  background:
+    radial-gradient(60% 80% at 100% 0%, rgba(192, 132, 252, 0.65), transparent 65%),
+    linear-gradient(135deg, #8b5cf6 0%, #7c3aed 45%, #5b21b6 100%);
+  box-shadow: var(--shadow-lg);
+}
+
+.cs-cta h2 {
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  color: #fff;
+}
+
+@media (max-width: 900px) {
+  .cs-picker {
+    grid-template-columns: 1fr;
+  }
+
+  .cs-pick {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .cs-pick img {
+    width: 120px;
+    flex: none;
+    aspect-ratio: 4 / 3;
+  }
+
+  .cs-detail__head,
+  .cs-blocks {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .cs-detail {
+    border-radius: var(--r-lg);
+  }
+
+  .cs-cta .btn {
+    width: 100%;
+  }
+}

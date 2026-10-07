@@ -1,0 +1,28 @@
+/* ==========================================================================
+   Base reset only.
+   All design tokens (colors, type, radii) now live in components/styles.css
+   so there is a single source of truth. The old teal tokens that were being
+   silently overridden here have been removed.
+   ========================================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
