@@ -26,20 +26,20 @@ const industries = [
 ];
 
 const company = [
-  { label: "Careers", href: "#careers" },
-  { label: "Blog", href: "#blog" },
-  { label: "Press Kit", href: "#press" },
-  { label: "Partner Program", href: "#partner" },
-  { label: "Contact Us", href: "#contact" },
+  { label: "Careers", to: "/careers" },
+  { label: "Blog", to: "/blog" },
+  { label: "Press Kit", to: "/press-kit" },
+  { label: "Partner Program", to: "/partner-program" },
+  { label: "Contact Us", to: "/contact" },
 ];
 
 const resources = [
-  { label: "Documentation", href: "#docs" },
-  { label: "API Reference", href: "#api" },
+  { label: "Documentation", to: "/documentation" },
+  { label: "API Reference", to: "/api-reference" },
   { label: "Case Studies", to: "/case-studies" },
-  { label: "Webinars", href: "#webinars" },
-  { label: "Help Center", href: "#help" },
-  { label: "Status Page", href: "#status" },
+  { label: "Webinars", to: "/webinars" },
+  { label: "Help Center", to: "/help-center" },
+  { label: "Status Page", to: "/status" },
 ];
 
 const socials = [
@@ -128,7 +128,7 @@ const Footer = () => {
               </li>
               {company.map((l) => (
                 <li key={l.label}>
-                  <a href={l.href}>{l.label}</a>
+                  <Link to={l.to}>{l.label}</Link>
                 </li>
               ))}
             </ul>
@@ -139,7 +139,7 @@ const Footer = () => {
             <ul>
               {resources.map((l) => (
                 <li key={l.label}>
-                  {l.to ? <Link to={l.to}>{l.label}</Link> : <a href={l.href}>{l.label}</a>}
+                  <Link to={l.to}>{l.label}</Link>
                 </li>
               ))}
             </ul>
@@ -151,10 +151,11 @@ const Footer = () => {
         <p>© 2024 Bling Reward Technologies Pvt. Ltd. All rights reserved.</p>
 
         <div className="footer__legal">
-          <a href="#privacy">Privacy Policy</a>
-          <a href="#terms">Terms of Service</a>
-          <a href="#cookie">Cookie Policy</a>
-          <a href="#gdpr">GDPR</a>
+          <Link to="/privacy-policy">Privacy Policy</Link>
+          <Link to="/terms-and-conditions">Terms &amp; Conditions</Link>
+          <HashLink smooth to="/privacy-policy#cookies">
+            Cookie Policy
+          </HashLink>
         </div>
       </div>
     </footer>

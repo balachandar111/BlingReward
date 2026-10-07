@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from "react";
-import { HelpCircle, Search, Plus, Phone, ArrowRight } from "lucide-react";
+import { HelpCircle, Search, Plus, Phone, ArrowRight, QrCode, Wallet, MessageCircle, Wrench, Sparkles, Check } from "lucide-react";
 import PageHero from "../components/PageHero";
 import DemoForm from "../components/DemoForm";
 import "./FAQpage.css";
@@ -48,10 +48,27 @@ const closing = {
   text: "Whether you're a growing FMCG brand, a retail giant, or a regional distributor — Bling Reward gives you everything you need to launch smart, automated loyalty campaigns that actually move the needle.",
 };
 
+/* quick-search topics shown as chips in the hero */
+const topics = [
+  { label: "QR rewards", q: "QR", icon: <QrCode size={15} /> },
+  { label: "UPI", q: "UPI", icon: <Wallet size={15} /> },
+  { label: "WhatsApp", q: "WhatsApp", icon: <MessageCircle size={15} /> },
+  { label: "Dealers", q: "dealer", icon: <Wrench size={15} /> },
+];
+
 function FAQpage() {
   const [openIndex, setOpenIndex] = useState(1); // 1-based, first question open
   const [query, setQuery] = useState("");
   const [showDemo, setShowDemo] = useState(false);
+
+  /* hero chips: fill the search box and jump to the answers */
+  const searchFor = (q) => {
+    setQuery(q);
+    setOpenIndex(null);
+    requestAnimationFrame(() =>
+      document.getElementById("faq-list")?.scrollIntoView({ behavior: "smooth", block: "start" })
+    );
+  };
 
   const results = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -63,6 +80,7 @@ function FAQpage() {
   return (
     <>
       <PageHero
+        crumbs="FAQ"
         badge={{ icon: <HelpCircle size={14} />, text: "Help centre" }}
         title={
           <>
@@ -70,6 +88,38 @@ function FAQpage() {
           </>
         }
         description="Quick answers to common questions about loyalty programs, QR rewards, and incentives."
+        chips={topics.map((t) => ({
+          label: t.label,
+          icon: t.icon,
+          onClick: () => searchFor(t.q),
+        }))}
+        floaters={[<MessageCircle size={24} />, <Sparkles size={20} />, <QrCode size={22} />, <Wallet size={22} />]}
+        visual={
+          <div className="faq-hero__chat" aria-hidden="true">
+            <div className="faq-hero__bubble is-q">
+              <span>Can I send rewards via UPI?</span>
+            </div>
+            <div className="faq-hero__bubble is-a">
+              <span className="faq-hero__avatar">
+                <Sparkles size={16} />
+              </span>
+              <p>
+                Yes, instant UPI rewards are built in and completely automated.
+                <em>
+                  <Check size={12} strokeWidth={3} /> Answered in seconds
+                </em>
+              </p>
+            </div>
+            <div className="faq-hero__bubble is-q is-short">
+              <span>Do you support WhatsApp?</span>
+            </div>
+            <div className="faq-hero__typing">
+              <i />
+              <i />
+              <i />
+            </div>
+          </div>
+        }
       >
         <label className="faq-search">
           <Search size={20} />
@@ -86,7 +136,7 @@ function FAQpage() {
         </label>
       </PageHero>
 
-      <section className="faq section">
+      <section className="faq section" id="faq-list">
         <div className="container faq__grid">
           {/* ---------- accordion ---------- */}
           <div className="faq__list" aria-live="polite">

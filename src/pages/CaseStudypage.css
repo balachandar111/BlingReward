@@ -322,3 +322,61 @@
     width: 100%;
   }
 }
+
+/* ==========================================================================
+   Case studies – hero visual (fanned brand cards)
+   ========================================================================== */
+
+.cs-hero__stack {
+  position: relative;
+  width: min(440px, 100%);
+  aspect-ratio: 1 / 0.92;
+  margin-inline: auto;
+}
+
+.cs-hero__card {
+  position: absolute;
+  width: 62%;
+  aspect-ratio: 4 / 3;
+  margin: 0;
+  border-radius: var(--r-md);
+  overflow: hidden;
+  background: #fff;
+  border: 6px solid #fff;
+  box-shadow: var(--shadow-lg);
+  transition: transform 0.5s var(--ease);
+}
+
+.cs-hero__card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cs-hero__card figcaption {
+  position: absolute;
+  left: 8px;
+  bottom: 8px;
+  padding: 5px 12px;
+  border-radius: var(--r-pill);
+  background: rgba(22, 10, 51, 0.78);
+  color: #fff;
+  font-size: 0.74rem;
+  font-weight: 700;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.cs-hero__card.c1 { top: 0;   left: 0;   transform: rotate(-6deg); }
+.cs-hero__card.c2 { top: 26%; right: 0;  transform: rotate(5deg);  z-index: 2; }
+.cs-hero__card.c3 { bottom: 0; left: 10%; transform: rotate(-2deg); z-index: 3; }
+
+.cs-hero__stack:hover .cs-hero__card.c1 { transform: rotate(-9deg) translate(-6px, -4px); }
+.cs-hero__stack:hover .cs-hero__card.c2 { transform: rotate(8deg) translate(8px, 0); }
+.cs-hero__stack:hover .cs-hero__card.c3 { transform: rotate(0deg) translate(0, 6px); }
+
+@media (max-width: 900px) {
+  .cs-hero__stack {
+    width: min(360px, 100%);
+  }
+}

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import { BookOpen, Check, ArrowRight } from "lucide-react";
+import { BookOpen, Check, ArrowRight, Trophy, TrendingUp, Star, Users } from "lucide-react";
 import PageHero from "../components/PageHero";
 import DemoForm from "../components/DemoForm";
 import "./CaseStudypage.css";
@@ -278,9 +278,18 @@ const CaseStudypage = () => {
 
   const current = cases[active];
 
+  /* hero chips: select a story and bring the detail panel into view */
+  const openCase = (i) => {
+    setActive(i);
+    requestAnimationFrame(() =>
+      document.getElementById("cs-panel")?.scrollIntoView({ behavior: "smooth", block: "start" })
+    );
+  };
+
   return (
     <>
       <PageHero
+        crumbs="Case studies"
         badge={{ icon: <BookOpen size={14} />, text: "Case studies" }}
         title={
           <>
@@ -288,6 +297,28 @@ const CaseStudypage = () => {
           </>
         }
         description="How three brands turned loyalty programs into measurable growth. Pick a story to read the full breakdown."
+        chips={cases.map((c, i) => ({
+          label: c.brand,
+          icon: <ArrowRight size={14} />,
+          onClick: () => openCase(i),
+        }))}
+        stats={[
+          { value: "3", label: "Brand stories" },
+          { value: "1400+", label: "Google reviews" },
+          { value: "3X", label: "User engagement" },
+          { value: "78%", label: "Satisfaction" },
+        ]}
+        floaters={[<Trophy size={24} />, <TrendingUp size={22} />, <Star size={20} />, <Users size={22} />]}
+        visual={
+          <div className="cs-hero__stack" aria-hidden="true">
+            {cases.map((c, i) => (
+              <figure className={`cs-hero__card c${i + 1}`} key={c.id}>
+                <img src={c.img} alt="" loading="eager" />
+                <figcaption>{c.brand}</figcaption>
+              </figure>
+            ))}
+          </div>
+        }
       />
 
       <section className="cs section">

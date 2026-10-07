@@ -1,0 +1,19 @@
+/* Scroll-reveal – used with components/useReveal.js */
+.reveal .reveal-item {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+  transition-delay: calc(var(--i, 0) * 70ms);
+}
+
+.reveal.is-in .reveal-item {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal .reveal-item {
+    opacity: 1;
+    transform: none;
+  }
+}

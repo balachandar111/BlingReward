@@ -1,0 +1,147 @@
+/* ==========================================================================
+   Simple Company / Resources pages
+   ========================================================================== */
+
+.info-soon {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 18px;
+  border-radius: var(--r-pill);
+  background: var(--lav-100);
+  border: 1px solid var(--border-strong);
+  color: var(--deeper);
+  font-size: 0.88rem;
+  font-weight: 700;
+}
+
+.info__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.info__grid > li {
+  display: flex;
+}
+
+.info-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  width: 100%;
+  padding: 30px;
+  border-radius: var(--r-lg);
+  border: 1px solid var(--border);
+  background: #fff;
+  box-shadow: var(--shadow-sm);
+  text-align: left;
+  transition: border-color 0.3s, box-shadow 0.4s var(--ease), transform 0.4s var(--ease);
+}
+
+button.info-card {
+  font: inherit;
+  cursor: pointer;
+}
+
+.info-card.is-link:hover {
+  border-color: var(--border-strong);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-5px);
+}
+
+.info-card__icon {
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  margin-bottom: 8px;
+  border-radius: 18px;
+  background: var(--gradient);
+  color: #fff;
+  box-shadow: 0 14px 26px -12px rgba(124, 58, 237, 0.7);
+}
+
+.info-card h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.info-card p {
+  font-size: 0.96rem;
+}
+
+.info-card__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: auto;
+  padding-top: 8px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--deep);
+}
+
+.info-card.is-link:hover .info-card__link svg {
+  transform: translateX(4px);
+}
+
+.info-card__link svg {
+  transition: transform 0.25s var(--ease);
+}
+
+.info__cta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px 32px;
+  margin-top: clamp(40px, 5vw, 72px);
+  padding: clamp(28px, 4vw, 52px) clamp(24px, 4vw, 56px);
+  border-radius: var(--r-xl);
+  box-shadow: var(--shadow-lg);
+}
+
+.info__cta > * {
+  position: relative;
+  z-index: 1;
+}
+
+.info__cta h2 {
+  font-size: clamp(1.5rem, 2.8vw, 2.1rem);
+  letter-spacing: -0.03em;
+}
+
+.info__cta p {
+  max-width: 46ch;
+  margin-top: 0.5rem;
+}
+
+.info__cta .btn-primary {
+  background: #fff;
+  color: var(--ink-700);
+  box-shadow: 0 16px 32px -16px rgba(0, 0, 0, 0.5);
+}
+
+.info__cta .btn-primary:hover {
+  background: var(--lav-100);
+}
+
+@media (max-width: 900px) {
+  .info__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .info__cta {
+    border-radius: var(--r-lg);
+  }
+
+  .info__cta .btn {
+    width: 100%;
+  }
+}
