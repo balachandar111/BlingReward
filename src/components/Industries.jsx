@@ -2,13 +2,15 @@ import React from "react";
 import "./Industries.css";
 
 const brands = [
-  { name: "Digisol", logo: "/digisol.png" },
-  { name: "GBR TMT", logo: "/gbr.png" },
-  { name: "Essel", logo: "/essel.avif" },
-  { name: "DreamWall", logo: "/dreamwall.png" },
-  { name: "Taralac", logo: "/taralac.png" },
-  { name: "Valli Paints", logo: "/valli.jpeg" },
-  { name: "Kolors", logo: "/kolors.svg" },
+  { name: "Savitri Group", logo: "/sps.jpeg" },
+  { name: "Kamaladevi Rice Industry", logo: "/kamaladevi.jpeg" },
+  { name: "Surya Teja", logo: "/suriyaa.jpg" },
+  { name: "PSA Krishna", logo: "/psa.jpeg" },
+  { name: "Maharishi", logo: "/maharishi.jpeg" },
+  { name: "Valluvar Brand", logo: "/valluvar.jpeg" },
+  { name: "Sree MK Nawaab", logo: "/nawaab.jpeg" },
+  { name: "Muthu SS Kangayam", logo: "/winss.jpeg" },
+  { name: "Suriya Brand Rice", logo: "/suriya.jpeg" },
 ];
 
 /* Two identical groups scroll left; the second is hidden from assistive tech. */
